@@ -2,4 +2,11 @@ UI Automator is UI testing framework introduced by Google to facilitate automati
 
 Appium leverages this UiAutomator with its own wrapper and came up with UiAutomator2 Driver to automate the Android Apps.
 
-js path : C:\Users\Selim\AppData\Roaming\npm\node_modules\appium\build\lib\main.js
+main.js path : C:\Users\Selim\AppData\Roaming\npm\node_modules\appium\build\lib\main.js
+
+Appium supports locators (id, xpath, accessibiltyId, className, androidUIAutomator
+
+Appium Inspector windows = https://github.com/appium/appium-inspector/releases  ---> Appium-Inspector-windows-2022.11.1.exe set up
+
+http://127.0.0.1:4723
+
