@@ -7,6 +7,7 @@ import java.net.URL;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -23,10 +24,14 @@ public class AppiumBasics extends BaseTest{
 		//Appium code --> Appium Server --> Mobile
 			// Actual automation
 		// id, xpath, accessibiltyId, className, androidUIAutomator
-		ConfigureAppium();
+	// tagName[@attribute='value']
 		driver.findElement(AppiumBy.accessibilityId("Preference")).click();
+//		driver.findElement(By.xpath("")
 
 
+
+
+//set wifi name
 
 	}
 
