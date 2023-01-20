@@ -10,3 +10,28 @@ Appium Inspector windows = https://github.com/appium/appium-inspector/releases  
 
 http://127.0.0.1:4723
 
+
+
+	    driver.findElement(AppiumBy.accessibilityId("Preference")).click();
+		driver.findElement(By.xpath("//android.widget.TextView[@content-desc='3. Preference dependencies']")).click();
+		driver.findElement(By.id("android:id/checkbox")).click();
+		driver.findElement(By.xpath("(//android.widget.RelativeLayout)[2]")).click();
+		driver.findElement(By.id("android:id/edit")).sendKeys("TURKSAT-KABLONET-3C41-5G");
+		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();
+
+
+mobile: longClickGesture
+This gesture performs long click action on the given element/coordinates. Available since Appium v1.19
+
+Supported arguments
+elementId: The id of the element to be clicked. If the element is missing then both click offset coordinates must be provided. If both the element id and offset are provided then the coordinates are parsed as relative offsets from the top left corner of the element.
+x: The x-offset coordinate
+y: The y-offset coordinate
+duration: Click duration in milliseconds. 500 by default. The value must not be negative
+Usage examples
+// Java
+((JavascriptExecutor) driver).executeScript("mobile: longClickGesture", ImmutableMap.of(
+    "elementId", ((RemoteWebElement) element).getId()
+));
+# Python
+driver.execute_script('mobile: longClickGesture', {'x': 100, 'y': 100, 'duration': 1000})
