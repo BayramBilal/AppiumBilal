@@ -29,9 +29,73 @@ x: The x-offset coordinate
 y: The y-offset coordinate
 duration: Click duration in milliseconds. 500 by default. The value must not be negative
 Usage examples
+
+
+ scoll demo
 // Java
 ((JavascriptExecutor) driver).executeScript("mobile: longClickGesture", ImmutableMap.of(
     "elementId", ((RemoteWebElement) element).getId()
 ));
 # Python
 driver.execute_script('mobile: longClickGesture', {'x': 100, 'y': 100, 'duration': 1000})
+
+mobile: scrollGesture
+This gesture performs scroll gesture on the given element/area. Available since Appium v1.19
+
+Supported arguments
+elementId: The id of the element to be scrolled. If the element id is missing then scroll bounding area must be provided. If both the element id and the scroll bounding area are provided then this area is effectively ignored.
+left: The left coordinate of the scroll bounding area
+top: The top coordinate of the scroll bounding area
+width: The width of the scroll bounding area
+height: The height of the scroll bounding area
+direction: Scrolling direction. Mandatory value. Acceptable values are: up, down, left and right (case insensitive)
+percent: The size of the scroll as a percentage of the scrolling area size. Valid values must be float numbers greater than zero, where 1.0 is 100%. Mandatory value.
+speed: The speed at which to perform this gesture in pixels per second. The value must not be negative. The default value is 5000 * displayDensity
+Returned value
+The returned value is a boolean one and equals to true if the object can still scroll in the given direction
+
+   //anrdoid UIAutomator
+        //where the scroll is known prior
+//       driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"));"));
+
+
+       // no prior idea
+
+        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                "left", 100, "top", 100, "width", 200, "height", 200,
+                "direction", "down",
+                "percent", 3.0
+        ));
+
+
+  // no prior idea
+        boolean canScrollMore;
+        do {
+            canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                    "left", 100, "top", 100, "width", 200, "height", 200,
+                    "direction", "down",
+                    "percent", 3.0
+            ));
+        }while(canScrollMore);
+
+
+swipe;
+mobile: swipeGesture
+This gesture performs swipe gesture on the given element/area. Available since Appium v1.19
+
+Supported arguments
+elementId: The id of the element to be swiped. If the element id is missing then swipe bounding area must be provided. If both the element id and the swipe bounding area are provided then the area is effectively ignored.
+left: The left coordinate of the swipe bounding area
+top: The top coordinate of the swipe bounding area
+width: The width of the swipe bounding area
+height: The height of the swipe bounding area
+direction: Swipe direction. Mandatory value. Acceptable values are: up, down, left and right (case insensitive)
+percent: The size of the swipe as a percentage of the swipe area size. Valid values must be float numbers in range 0..1, where 1.0 is 100%. Mandatory value.
+speed: The speed at which to perform this gesture in pixels per second. The value must not be negative. The default value is 5000 * displayDensity
+Usage examples
+// Java
+((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+    "left", 100, "top", 100, "width", 200, "height", 200,
+    "direction", "left",
+    "percent", 0.75
+));

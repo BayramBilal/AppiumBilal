@@ -26,6 +26,8 @@ public class LongPressTest extends BaseTest{
          Assert.assertEquals(menuText, "Sample menu");
          Assert.assertTrue(driver.findElement(By.id("android:id/title")).isDisplayed());
 
+         // scroll down
+
     }
 
 }
