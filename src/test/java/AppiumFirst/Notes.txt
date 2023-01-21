@@ -99,3 +99,22 @@ Usage examples
     "direction", "left",
     "percent", 0.75
 ));
+
+//Drag and Drop
+mobile: dragGesture
+This gesture performs drag action from the given element/coordinates to the given point. Available since Appium v1.19
+
+Supported arguments
+elementId: The id of the element to be dragged. If the element id is missing then both start coordinates must be provided. If both the element id and the start coordinates are provided then these coordinates are considered as offsets from the top left element corner.
+startX: The x-start coordinate
+startY: The y-start coordinate
+endX: The x-end coordinate. Mandatory argument
+endY: The y-end coordinate. Mandatory argument
+speed: The speed at which to perform this gesture in pixels per second. The value must not be negative. The default value is 2500 * displayDensity
+Usage examples
+// Java
+((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
+    "elementId", ((RemoteWebElement) element).getId(),
+    "endX", 100,
+    "endY", 100
+));
