@@ -118,3 +118,9 @@ Usage examples
     "endX", 100,
     "endY", 100
 ));
+
+//copy paste
+		//copy to clipboard- paste it clipboard testing
+		driver.setClipboardText("TURKSAT-KABLONET-3C41-5G");
+		driver.findElement(By.id("android:id/edit")).sendKeys(driver.getClipboardText());
+		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();
