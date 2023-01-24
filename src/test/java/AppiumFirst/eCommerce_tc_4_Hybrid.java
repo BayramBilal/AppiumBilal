@@ -1,8 +1,10 @@
 package AppiumFirst;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,8 +13,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
-public class eCommerce_tc_3 extends BaseTest {
+public class eCommerce_tc_4_Hybrid extends BaseTest {
 
 
     @Test
@@ -44,7 +47,6 @@ public class eCommerce_tc_3 extends BaseTest {
         }
 
     driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
-
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     wait.until(ExpectedConditions.attributeContains(driver.findElement(By.id("com.androidsample.generalstore:id/toolbar_title")), "text", "Cart"));
     List<WebElement> productPrices = driver.findElements(By.id("com.androidsample.generalstore:id/productPrice"));
@@ -56,7 +58,6 @@ public class eCommerce_tc_3 extends BaseTest {
            //$160.97
            Double price = getFormattedAmount(amountString);
            totalSum = totalSum + price;   //160.97 + 120 = 280.97
-
         }
         String displaySum = driver.findElement(By.id("com.androidsample.generalstore:id/totalAmountLbl")).getText();
         Double displatFormattedSum = getFormattedAmount(displaySum);
@@ -67,8 +68,23 @@ public class eCommerce_tc_3 extends BaseTest {
         driver.findElement(By.id("android:id/button1")).click();
         driver.findElement(AppiumBy.className("android.widget.CheckBox")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
 
         //Hybrid app -->Google page -->
+
+    Set<String> contexts = driver.getContextHandles();
+        for (String contextName : contexts) {
+            System.out.println(contextName);
+        }
+        driver.context("WEBVIEW_com.androidsample.generalstore"); // need chrome driver
+        driver.findElement(By.name("q")).sendKeys("rahul shetty academy", Keys.ENTER);
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
+        driver.context("NATIVE_APP");
+
+
+
+
+
+
     }
 }

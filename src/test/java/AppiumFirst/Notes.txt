@@ -124,3 +124,24 @@ Usage examples
 		driver.setClipboardText("TURKSAT-KABLONET-3C41-5G");
 		driver.findElement(By.id("android:id/edit")).sendKeys(driver.getClipboardText());
 		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();
+
+		Native-Hybrid app
+
+		   //Hybrid app -->Google page -->
+
+            Set<String> contexts = driver.getContextHandles();
+                for (String contextName : contexts) {
+                    System.out.println(contextName);
+                }
+     driver.context("WEBVIEW_com.androidsample.generalstore"); // need chrome driver
+        driver.findElement(By.name("q")).sendKeys("rahul shetty academy", Keys.ENTER);
+        driver.pressKey(new KeyEvent(AndroidKey.BACK));
+        driver.context("NATIVE_APP");
+
+
+        TestBase, options.setChromedriverExecutable method is added for UI google search
+                  UiAutomator2Options options=  new UiAutomator2Options();
+                        options.setChromedriverExecutable("C:\\Users\\Selim\\chromedriver_win32\\chromedriver.exe");
+                        options.setDeviceName("Phone1");
+                        options.setApp("C:\\Users\\Selim\\IdeaProjects\\AppiumBilal\\src\\test\\java\\resources\\ApiDemos-debug.apk");
+                        options.setApp("C:\\Users\\Selim\\IdeaProjects\\AppiumBilal\\src\\test\\java\\resources\\General-store.apk");
