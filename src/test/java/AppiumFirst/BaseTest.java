@@ -69,15 +69,20 @@ public void swipeAction (WebElement ele, String direction){
 
 
 }
+public Double getFormattedAmount(String amount){
 
-
-
-@AfterClass
-public void tearDown(){
-
-
-    driver.quit();
-    serviceBuilder.stop();
-
+    Double price = Double.parseDouble(amount.substring(1));
+    return price;
 }
+
+
+//
+//@AfterClass
+//public void tearDown(){
+//
+//
+//    driver.quit();
+//    serviceBuilder.stop();
+//
+//}
 }

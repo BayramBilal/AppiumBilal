@@ -2,6 +2,7 @@ package AppiumFirst;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class eCommerce_tc_1 extends BaseTest {
@@ -17,7 +18,7 @@ public class eCommerce_tc_1 extends BaseTest {
     driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Argentina\"));"));
     driver.findElement(By.xpath("//android.widget.TextView[@text='Argentina']")).click();
     driver.findElement(By.id("com.androidsample.generalstore:id/btnLetsShop")).click();
-    Thread.sleep(3000);
+
 
     }
 }
